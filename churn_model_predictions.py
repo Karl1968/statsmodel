@@ -7,9 +7,15 @@ X1=X.values
 y1=y.values
 
 # Diviser le dataset entre le Training set et 10% Test set
-from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X1, y1, test_size = 0.10, random_state = 0)
+def set_train_test(xTrain,yTrain,percent):
+    from sklearn.model_selection import train_test_split
+    global X_train, X_test, y_train, y_test
+    #response = input("Veuillez saisir la valeur pour le test set:  ")
+    #percent=int(response)
+    percent=int(percent)
+    X_train, X_test, y_train, y_test = train_test_split(xTrain, yTrain, test_size = percent/100, random_state = 0)
 
+set_train_test(X1,y1,10)
 
 # Feature Scaling
 from sklearn.preprocessing import StandardScaler
